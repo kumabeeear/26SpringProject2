@@ -115,5 +115,7 @@ public class PickupItemAim : MonoBehaviour
 
         if (itemObjectToHide != null) itemObjectToHide.SetActive(false);
         gameObject.SetActive(false); // 关掉trigger避免重复
+        
+        SFXPlayer.Instance?.PlayPickup();
     }
 }

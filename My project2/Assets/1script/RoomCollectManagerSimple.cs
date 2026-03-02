@@ -15,13 +15,19 @@ public class RoomCollectManagerSimple : MonoBehaviour
 
     void Awake()
     {
+        // 简单单例（每个场景一个也可以；如果你想跨场景只留一个再告诉我）
         Instance = this;
+
+        // 进新场景时重置一次，避免上个场景已经播过导致本场景不播
+        playedAllSfx = false;
+        allCollected = false;
     }
 
     void Update()
     {
         allCollected = CheckAllCollected();
 
+        // ✅ 第一次达成“全收集”时播放一次
         if (allCollected && !playedAllSfx)
         {
             playedAllSfx = true;
